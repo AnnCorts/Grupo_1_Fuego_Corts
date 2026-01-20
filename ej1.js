@@ -22,8 +22,17 @@ let libros = [{
     genero: "Psicologia",
     disponible: false
 },
+{
+    id: 3,
+    titulo: "Bajo el agua",
+    autor: "Paula Hawkins",
+    anio: 2017,
+    genero: "Suspenso",
+    disponible: false
 
- {id: 4,
+},
+
+{ id: 4,
     titulo: "El retrato de Dorian Grey",
     autor: "Oscar Wilde",
     anio: 2005,
