@@ -105,7 +105,7 @@ let usuarios = [{
     id: 2,
     nombre: "MarianaFuego",
     email: "marianafuego96@hotmail.com",
-    librosPrestados: null
+    librosPrestados: []
 },
 {
     id: 3,
@@ -117,12 +117,12 @@ let usuarios = [{
     id: 4,
     nombre: "Manuel",
     email: "manuel@gmail.com",
-    librosPrestados: null
+    librosPrestados: []
 },
 {
     id: 5,
     nombre: "Pablo",
     email:"pablomartinez@gmail.com",
-    librosPrestados: null
+    librosPrestados: []
 }
 ]

@@ -26,6 +26,14 @@ let libros = [{
     genero: "Psicologia",
     disponible: false
 },
+{
+     id: 3,
+    titulo: "Bajo el agua",
+    autor: "Paula Hawkins",
+    anio: 2017,
+    genero: "Suspenso",
+    disponible: false
+},
 
  {id: 4,
     titulo: "El retrato de Dorian Grey",
@@ -100,7 +108,7 @@ let usuarios = [{
     id: 2,
     nombre: "MarianaFuego",
     email: "marianafuego96@hotmail.com",
-    librosPrestados: null
+    librosPrestados: []
 },
 {
     id: 3,
@@ -112,13 +120,13 @@ let usuarios = [{
     id: 4,
     nombre: "Manuel",
     email: "manuel@gmail.com",
-    librosPrestados: null
+    librosPrestados: []
 },
 {
     id: 5,
     nombre: "Pablo",
     email:"pablomartinez@gmail.com",
-    librosPrestados: null
+    librosPrestados: []
 }
 ]
 
@@ -136,3 +144,29 @@ a) Crear una función generarReporteLibros() que utilice métodos avanzados de a
 ✔ Cantidad de libros por género.
 ✔ Libro más antiguo y más nuevo
 */
+function generarReporteLibros() { // cantidad total de libros
+    const totalLibros = libros.length; // length es la cantidad de libros en esa lista
+    const cantidadPrestados = libros.filter(l => !l.disponible).length;// disp === false
+    const cantidadporGenero = libros.reduce((acc, libro) => {// reduce>recorrelalista
+ acc[libro.genero] = (acc[libro.genero] || 0) + 1; // si el genero no existe empeza en cero sino
+    return acc; // agrega +1 devuelve el listado completo
+  }, {});
+
+  return {
+        totalLibros,
+        cantidadPrestados,
+        cantidadporGenero
+    };
+
+}console.log(generarReporteLibros());
+ /* devuelve: 
+totalLibros: 10,
+  cantidadPrestados: 4,
+  cantidadporGenero: {
+    Poesia: 1,
+    Psicologia: 2,
+    Suspenso: 3,
+    'Novela Gotica': 1,
+    Novela: 3*/
+
+
