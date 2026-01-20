@@ -18,6 +18,17 @@ let libros = [{
     genero: "Psicologia",
     disponible: false
 },
+{
+
+    id: 3,
+    titulo: "Bajo el agua",
+    autor: "Paula Hawkins",
+    anio: 2017,
+    genero: "Suspenso",
+    disponible: false
+
+},
+
 
  {id: 4,
     titulo: "El retrato de Dorian Grey",
@@ -92,7 +103,7 @@ let usuarios = [{
     id: 2,
     nombre: "MarianaFuego",
     email: "marianafuego96@hotmail.com",
-    librosPrestados: null
+    librosPrestados: []
 },
 {
     id: 3,
@@ -104,13 +115,13 @@ let usuarios = [{
     id: 4,
     nombre: "Manuel",
     email: "manuel@gmail.com",
-    librosPrestados: null
+    librosPrestados: []
 },
 {
     id: 5,
     nombre: "Pablo",
     email:"pablomartinez@gmail.com",
-    librosPrestados: null
+    librosPrestados: []
 }
 ]
 //____________________________________________________________________________
@@ -119,10 +130,82 @@ let usuarios = [{
 
 /*  
 7. Cálculos Estadísticos
-a) Desarrollar una función calcularEstadisticas() que utilice el objeto Math para calcular y mostrar:
+a) Desarrollar una función calcularEstadisticas() 
+que utilice el objeto Math para calcular y mostrar:
+
 ✔ Promedio de años de publicación de los libros.
 ✔ Año de publicación más frecuente.
 ✔ Diferencia en años entre el libro más antiguo y el más nuevo.
 
 */
+//--------------------------------------funcion para contar los años------------------------------------------
+function contarAnios(anio) {
+    let contador = 0; // Inicializa un contador en 0
+    for (let indiceLibros = 0; indiceLibros <= libros.length - 1; indiceLibros++) { // Recorre el array 'libros'
+        if (anio === libros[indiceLibros].anio) { // Si el año del libro actual coincide con el 'anio' buscado
+            contador++; // Incrementa el contador
+        }
+    }
+    return contador; // Devuelve el contador con los años de los libros (cuantos de cada año hay)
+    //guardamos esto como funcion auxiliar.
+}
+
+//-----------------------------------------ESTADISTICAS-------------------------------------------------------
+function calcularEstadisticas() {
+
+
+
+    //_______________________________________PROMEDIO________________________________________________________
+    //              Calcula el promedio de los años de publicación de los libros
+    let anioDeLibrosAcumulados = 0; // Inicializa una variable para acumular los años de los libros
+    // Recorre el array de libros y suma los años de cada libro
+    for (let indiceLibros = 0; indiceLibros <= libros.length - 1; indiceLibros++) { 
+      anioDeLibrosAcumulados += libros[indiceLibros].anio; // va sumando los años al contador.
+    }
+    
+    // Calcula y muestra el promedio de los años de los libros
+    console.log(`Promedio de año de libros:, ${anioDeLibrosAcumulados} / ${libros.length}`); 
+  
+
+
+    //_______________________________________FRECUENCIA______________________________________________________
+    //                     Calcular el año de publicación más frecuente
+    let anioMasFrecuente = 0; // Inicializa una variable para almacenar el año más frecuente
+    let cantidadDeApariciones = 0; // Inicializa una variable para almacenar la cantidad de veces que aparece el año más frecuente
+  
+    // Recorrer el array de libros
+    for (let indiceLibros = 0; indiceLibros <= libros.length - 1; indiceLibros++) {
+      let anioActual = libros[indiceLibros].anio; // Obtiene el año del libro actual
+      let cantidadActual = contarAnios(anioActual); // Llama a la función contarAnios para contar cuántas veces aparece ese año en el array
+  
+      // Si la cantidad actual es mayor que la cantidad de apariciones del año más frecuente hasta ahora
+      if (cantidadActual > cantidadDeApariciones) {
+        anioMasFrecuente = anioActual; // Reemplaza el año más frecuente
+        cantidadDeApariciones = cantidadActual; // Actualiza la cantidad de apariciones
+      }
+    }
+
+    // imprime el año de publicación más frecuente
+    console.log(`El año de publicación más frecuente fue:, ${anioMasFrecuente}`); 
+
+
+
+    //________________________________________EXTREMOS________________________________________________________
+    // Calcula el año del libro más antiguo y el más nuevo. 
+    // Inicializa las variables con el año del primer libro 
+    let anioMasViejo = libros[0].anio; 
+    let anioMasNuevo = libros[0].anio; 
+    // Recorre el array de libros
+    for (let indiceLibros = 0; indiceLibros <= libros.length - 1; indiceLibros++) {
+      anioMasViejo = Math.min(anioMasViejo, libros[indiceLibros].anio); // Actualiza anioMasViejo si se encuentra un año menor
+      anioMasNuevo = Math.max(anioMasNuevo, libros[indiceLibros].anio); // Actualiza anioMasNuevo si se encuentra un año mayor
+    }
+    // imprime el año del libro más antiguo y el más nuevo
+    console.log(`El año del libro más antiguo es:, ${anioMasViejo}, y el año del libro más nuevo es:, ${anioMasNuevo}`);
+
+}
+
+
+
+  calcularEstadisticas(); // Llama a la función para calcular las estadísticas
 
