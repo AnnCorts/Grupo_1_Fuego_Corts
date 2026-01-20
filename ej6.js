@@ -17,7 +17,14 @@ let libros = [{
     genero: "Psicologia",
     disponible: false
 },
+{   id: 3,
+    titulo: "Bajo el agua",
+    autor: "Paula Hawkins",
+    anio: 2017,
+    genero: "Suspenso",
+    disponible: false
 
+},
  {id: 4,
     titulo: "El retrato de Dorian Grey",
     autor: "Oscar Wilde",
@@ -91,7 +98,7 @@ let usuarios = [{
     id: 2,
     nombre: "MarianaFuego",
     email: "marianafuego96@hotmail.com",
-    librosPrestados: null
+    librosPrestados: []
 },
 {
     id: 3,
@@ -103,13 +110,13 @@ let usuarios = [{
     id: 4,
     nombre: "Manuel",
     email: "manuel@gmail.com",
-    librosPrestados: null
+    librosPrestados: []
 },
 {
     id: 5,
     nombre: "Pablo",
     email:"pablomartinez@gmail.com",
-    librosPrestados: null
+    librosPrestados: []
 }
 ]
 //____________________________________________________________________________
@@ -121,5 +128,30 @@ let usuarios = [{
 a) Implementar una función librosConPalabrasEnTitulo() que identifi que y muestre todos los libros cuyo título contiene más de una palabra (no títulos que contengan números ni otros caracteres).
 b) La función debe devolver un array con los títulos de esos libros y mostrarlo en la consola.
 */
+function librosConPalabrasEnTitulo() { // declaramos la funcion
+    const librosFiltrados = libros.filter(libro => { // empezamos a filtrar 
+
+        // Más de una palabra
+        const masDeUnaPalabra = libro.titulo.trim().split(" ").length > 1;
+
+        return masDeUnaPalabra;
+    });
+
+    console.log("Libros con más de una palabra en el título:"); // visualizamos mensaje
+    librosFiltrados.forEach(libro => { // le damos valor a cada libro encontrado con su titulo 
+        console.log(`- ${libro.titulo}`);
+    });
+}librosConPalabrasEnTitulo();
+
+/* devuelve: 
+// Libros con más de una palabra en el título:
+- La divina comedia
+- La soledad
+- Bajo el agua
+- El retrato de Dorian Grey
+- Rebelion en la granja
+- El psicoanalista
+- Practicas de mindfulness
+- La chica del tren*/
 
 
