@@ -85,7 +85,7 @@ let usuarios = [{
     
     id: 1,
     nombre: "Antocorts",
-    email: "antocorts@gmail.com",
+    email: "antoCorts@gmail.com",
     librosPrestados: [2,6]
 },
 {
@@ -125,4 +125,35 @@ a) Crear una función normalizarDatos() que utilice métodos de strings para:
 ✔ Formatear los emails de los usuarios a minúsculas.
 
 */
+
+function normalizarDatos() {
+
+
+    // Normaliza títulos de libros
+
+    for (let indiceLibros = 0; indiceLibros <= libros.length - 1; indiceLibros++) {  //definimos una variable llamada indicelibros, que recorre desde cero hasta el largo del array
+      // Convierte el título del libro a mayúsculas
+      let librosMayuscula = libros[indiceLibros].titulo.toUpperCase();    // 
+      // Elimina espacios en blanco al principio y al final del nombre del autor. Es para evitar errores al comparar strings
+      let NombresSinEspacio = libros[indiceLibros].autor.trim();           
+    // imprime el título en mayúsculas y el nombre del autor sin espacios adicionales
+      console.log(librosMayuscula);
+      console.log(NombresSinEspacio);
+    }
+
+    // Normalizar emails de usuarios
+    for (let indiceUsuarios = 0; indiceUsuarios <= usuarios.length - 1; indiceUsuarios++) {  //definimos una variable llamada indiceUsuarios, que recorre desde cero hasta el largo del array
+      // Convierte el email del usuario a minúsculas
+      let emailMinuscula = usuarios[indiceUsuarios].email.toLowerCase(); 
+      // imprime el email en minúsculas
+      console.log(emailMinuscula);
+    }
+    
+}
+  normalizarDatos(); // Llamar a la función para normalizar los datos
+
+
+
+
+
 
